@@ -26,8 +26,15 @@ checklist.
   — IoT water-quality monitoring for aquaculture: ESP32 sensor node, Supabase,
   a PatchTST forecasting model, Flutter app. Took it to the national final of
   the Vietnam Youth Innovation Contest 2026.
-- CTF, mostly cryptography. Top 13 in Vietnam on CyberTalents; captain of
-  C0mt4m367 and of meobeo.
+- CTF, mostly cryptography. Ranked
+  **[13th in Vietnam on CyberTalents](https://cybertalents.com/members/vuduykhang/profile)**;
+  captain of C0mt4m367 and of meobeo.
+
+  The ranking is live on the profile above, and reproducible from
+  [cybertalents.com/worldrank](https://cybertalents.com/worldrank) by filtering
+  the country to Vietnam. Snapshot taken 15 September 2026:
+
+  ![CyberTalents Vietnam leaderboard, row 13](assets/cybertalents-vietnam-rank-2026-09-15.png)
 
 ### A note on the older repos here
 
