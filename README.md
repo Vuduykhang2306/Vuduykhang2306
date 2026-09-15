@@ -40,6 +40,31 @@ properties pointed at the unpatched contract and *required* to fail. CI checks
 all four outcomes by name. A green fuzzing run means either the code holds or
 the harness never got there, and the output looks identical either way.
 
+### Built on top of that
+
+**[token-powers](https://github.com/Vuduykhang2306/token-powers)** -
+[live](https://vuduykhang2306.github.io/token-powers/) - paste an ERC-20 from
+mainnet and the page says what its deployer can still do to the people holding
+it. It came out of the review above: the conclusion there was that a buyer can
+read five booleans and know their exposure permanently, which is useless advice
+unless you know which five.
+
+It is built around a distinction the usual reading misses. An *owner power* is
+something a privileged address can choose to do later, and renouncing ownership
+kills it. A *baked-in mechanism* runs on every transfer with nobody calling
+anything, and renouncing makes it permanent instead, because the setter that
+could have switched it off is unreachable too. The same `owner() = 0xdead` is
+good news for one and bad news for the other.
+
+The part I like best is the sell simulation. Flags tell you what powers exist,
+not whether a sell goes through right now, so the page asks the chain directly
+with `eth_call` and a state override: fake the balance, try the transfer, see
+whether the EVM reverts. Nothing signed, nothing broadcast. Same idea as the
+fork PoCs in the audit repo, with the RPC doing what `deal()` does in Foundry.
+
+Read-only throughout. It never requests a signature and never builds a
+transaction.
+
 ### Elsewhere
 
 - **[nodex.io.vn](https://nodex.io.vn)** — an e-commerce platform I built and
