@@ -6,21 +6,46 @@ blockchain track. I spend most of my time on smart contract security.
 I have been around crypto since 2022, which is where the interest came from:
 I wanted to understand why so many token contracts turn out to be traps.
 
-### What I am working on
+### Smart contract security
 
 **[smart-contract-security-lab](https://github.com/Vuduykhang2306/smart-contract-security-lab)**
-— an audit carried out end to end. A tax token with eight findings in it, a
+— an audit carried out end to end. A tax token with **nine findings** in it, a
 runnable Foundry PoC for each, a full report, the patched contract, and a retest
-suite. 20 tests, CI on every push. The report is
+suite that replays every exploit against the patch. **23 tests**, CI on every
+push. The report is
 [here](https://github.com/Vuduykhang2306/smart-contract-security-lab/blob/main/reports/2026-09_MemeTax_audit-report.md);
 the two findings worth your time are M-01 and M-02.
 
-Next up, tracked as issues on that repo: a Foundry invariant suite, the same
-properties under Echidna, and an Anchor lab to put real PoCs behind my Solana
-checklist.
+The ninth finding is the one I am least proud of and most glad about. My manual
+pass missed it. It only turned up when I had to state, as a property, that every
+ETH the contract has promised must be backed by its balance — and the fee swap
+pays out the whole balance, dividend pool included.
+
+**[A public review of a launchpad token template](https://github.com/Vuduykhang2306/smart-contract-security-lab/tree/main/reviews/2026-09_FatTokenV5)**
+on Ethereum mainnet, using a dead token as the specimen. 8 findings, 7 proofs of
+concept running against a mainnet fork, and the contract address published so
+anyone can check the work. The useful result: every dangerous power in that
+template is decided in the constructor and no function can switch any of them
+back on, so a buyer can read five booleans and know their exposure permanently.
+
+Scope was set by disclosure ethics — a near-dead contract only, and only findings
+about what the deployer can do to holders. Nothing that hands a stranger somebody
+else's funds.
+
+**Two fuzzers and a control.** The four invariants run under Foundry and again
+under [Echidna](https://github.com/Vuduykhang2306/smart-contract-security-lab/tree/main/test/echidna).
+They agree, and neither caught anything the other missed — a negative result,
+recorded as one. What the exercise did produce is the control: the same
+properties pointed at the unpatched contract and *required* to fail. CI checks
+all four outcomes by name. A green fuzzing run means either the code holds or
+the harness never got there, and the output looks identical either way.
 
 ### Elsewhere
 
+- **[nodex.io.vn](https://nodex.io.vn)** — an e-commerce platform I built and
+  run on my own, with paying customers. Next.js, a REST API for customers who
+  want to automate, a Linux VPS behind Cloudflare. Auditing contracts and never
+  having to defend a live system of your own is a gap, so this is the other half.
 - **[aquaoracle-app](https://github.com/Vuduykhang2306/aquaoracle-app)** and
   **[Esp32_AquaOracle_Programm](https://github.com/Vuduykhang2306/Esp32_AquaOracle_Programm)**
   — IoT water-quality monitoring for aquaculture: ESP32 sensor node, Supabase,
@@ -50,5 +75,9 @@ you can hold for long.
 
 ### Contact
 
-vuduykhang23062008@gmail.com — open to Smart Contract Auditor internships,
-Ho Chi Minh City or remote.
+vuduykhang23062008@gmail.com — Ho Chi Minh City or remote.
+
+Open to internships in smart contract security, Solidity development, or Web3
+frontend. Those are the same interest from three sides: I would rather read the
+contract than trust the ABI, and I would rather ship something and defend it
+than only read other people's code.
