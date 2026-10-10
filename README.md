@@ -65,6 +65,22 @@ fork PoCs in the audit repo, with the RPC doing what `deal()` does in Foundry.
 Read-only throughout. It never requests a signature and never builds a
 transaction.
 
+### Writing
+
+Longer notes on the work above, mostly about the parts I got wrong first, at
+**[vuduykhang2306.github.io](https://vuduykhang2306.github.io)**:
+
+- [Whose money is this?](https://vuduykhang2306.github.io/2026/10/09/whose-money-is-this.html)
+  How H-04 got past two reads of the same function and fell out of a one-line
+  invariant.
+- [A green fuzzing run doesn't prove much](https://vuduykhang2306.github.io/2026/10/09/a-green-fuzzing-run.html)
+  Two fuzzers, one result, and why the negative control is the part worth
+  keeping.
+- [The first drafts of three findings](https://vuduykhang2306.github.io/2026/10/09/first-drafts-of-three-findings.html)
+  M-01, M-02 and L-01 were each wrong in a different way before they were right.
+- [Renounced ownership is not a verdict](https://vuduykhang2306.github.io/2026/10/09/renounced-is-not-a-verdict.html)
+  Owner powers versus baked-in mechanisms, from the FatTokenV5 review.
+
 ### Elsewhere
 
 - **[nodex.io.vn](https://nodex.io.vn)** — an e-commerce platform I built and
