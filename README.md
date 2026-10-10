@@ -12,7 +12,7 @@ to know why so many token contracts turn out to be traps.
 is one audit done start to finish. The target is a tax token with nine
 findings. The repo has a runnable Foundry PoC for each one, the full report,
 the patched contract, and a retest suite that runs every exploit again against
-the patch. 23 tests, CI on every push. The report is
+the patch. 27 tests, CI on every push. The report is
 [here](https://github.com/Vuduykhang2306/smart-contract-security-lab/blob/main/reports/2026-09_MemeTax_audit-report.md).
 If you only have time for two findings, read M-01 and M-02.
 
